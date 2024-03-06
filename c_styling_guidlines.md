@@ -32,6 +32,11 @@ void calculate_average(ing *array, int size);
 const int MAX_VALUE = 100;
 ```
 
+### Structs Names
+
+* PascalCase: This is the most common convention for naming structs in C. It involves capitalizing the first letter of each word in the name, with no underscoes.
+* Examples: `Point`, `LinkedListNode`, `EmployeeRecord`
+
 ### File and Folder Names
 
 * Use `lowercase_with_underscores` for file and folder names.
@@ -73,6 +78,8 @@ int calculate_sum(int a, int b)
 }
 ```
 
+ADD SYNTAX FOR STRUCTS AND OBJECTS
+
 ## Additional Tips
 
 * Use meaninful variable names instead of single-letter variables
@@ -80,6 +87,3 @@ int calculate_sum(int a, int b)
 * Check for memory leaks and other potential errors using tools like Valgrind.
 * Write unit test to verify the correctness of your code.
 * By following these guidelines, you can write clean, consistent, and maintainble C code that is easier to understand and work with.
-
-
-
