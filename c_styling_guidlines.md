@@ -18,15 +18,19 @@ This style guide provide recommendations for writing consistent, clean, and main
 * Avoid abbreviations or jargon that might be unclear to others.
 * Examples:
 
-`int user_age;`
-`void calculate_average(ing *array, int size);`
+```c
+int user_age;
+void calculate_average(ing *array, int size);
+```
 
 ### Constants
 
 * Use UPPERCASE_WITH_UNDERSCORES for constant names.
 * Example:
 
-`const int MAX_VALUE = 100;`
+```c
+const int MAX_VALUE = 100;
+```
 
 ### File and Folder Names
 
