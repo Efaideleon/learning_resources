@@ -86,4 +86,4 @@ ADD SYNTAX FOR STRUCTS AND OBJECTS
 * Avoid magic numbers (hardcoded values without explanation). Use constants or variables with descriptive names instead.
 * Check for memory leaks and other potential errors using tools like Valgrind.
 * Write unit test to verify the correctness of your code.
-* By following these guidelines, you can write clean, consistent, and maintainble C code that is easier to understand and work with.
+* By following these guidelines, you can write clean, consistent, and maintainble C code that is easier to understand and work with. 
