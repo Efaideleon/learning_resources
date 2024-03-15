@@ -1,5 +1,7 @@
 # Notes
 
+For each issue, or next task that you are going to implement, see if you can split it any further following this 4-steps
+
 ## Components
 
 What are the different parts of the problem that need to be solved? Write down each component as a separate heading in your notes.

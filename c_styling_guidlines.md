@@ -65,20 +65,32 @@ int calculate_sum(int a, int b)
 ## Comments
 
 * Write comments to explain the purpose of the code and how it works.
-* Use sentence case for comments.
-* Add a period at the end of sentence-like comments.
+* Use lower case for comments
 * Update comments when you modify the code.
 * Examples:
 
 ```c
-// This function takes two integers as input and returns their sum.`
+// this function takes two integers as input and returns their sum.`
 int calculate_sum(int a, int b) 
 {
     return a + b;
 }
 ```
 
-ADD SYNTAX FOR STRUCTS AND OBJECTS
+## Doxygen documentation for functions
+
+* The documentation should go above the function's definition in the `header file`
+
+```c
+/**
+ * calculates the sum of two integers.
+ *
+ * @param a The first integer.
+ * @param b The second integer.
+ * @return The sum of a and b.
+ */
+int sum(int a, int b);
+```
 
 ## Additional Tips
 
@@ -87,3 +99,5 @@ ADD SYNTAX FOR STRUCTS AND OBJECTS
 * Check for memory leaks and other potential errors using tools like Valgrind.
 * Write unit test to verify the correctness of your code.
 * By following these guidelines, you can write clean, consistent, and maintainble C code that is easier to understand and work with. 
+  
+
