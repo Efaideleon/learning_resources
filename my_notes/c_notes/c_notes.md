@@ -59,3 +59,19 @@ void CreateWindow(ApplicationManager *app_manager, LoginWindowUI **login_window_
 
 CreateWindow(application_manager, &login_window_ui, &chat_window_ui, &friend_list_ui);
 ```
+
+## Changing a value by reference
+
+```c
+void changeValue(int *value) {
+    *value = 10; // Dereference the pointer to change the value of the variable it points to
+}
+
+int main() {
+    int num = 5;
+    printf("Before: %d\n", num);
+    changeValue(&num); // Pass the address of num to the function
+    printf("After: %d\n", num);
+    return 0;
+}
+```

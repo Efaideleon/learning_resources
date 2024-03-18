@@ -9,4 +9,4 @@ Make sure to include the necessary libraries on VSCode to load GTK and fix synta
 The libraries are installed when running the command:
 `brew install gtk+` on the the folder at `opt/homebrew/Cellar/`
 
-![alt text](vscode_gtk_include_path.png)
+![alt text](assets/vscode_gtk_include_path.png)

@@ -24,7 +24,7 @@ Class diagrams are a fundamental tool in UML (Unified Modeling Language) for vis
 
 ## Relationships
 
-![alt text](class_diagram_relations.png)
+![alt text](assets/class_diagram_relations.png)
 
 * **Assocation:** A general relationship between classes, often indicating that one class knows about or uses another. Represented by a solid line with optional arrowheads and labels.
   * **Multiplicity:**  Indicates how many instances of one class are related to instances of another class (e.g., `1`, `*`, `0..1`).
@@ -37,3 +37,12 @@ Class diagrams are a fundamental tool in UML (Unified Modeling Language) for vis
 * **Interfaces:** Similar to classes but represent contracts for behavior without implementation. Represented by a circle with the interface name.
 * **Abstract Classes:** Classes that cannot be instantiated directly. Their names are italicized in the class diagram.
 * **Notes:** Can be added to provide additional information or clarify relationships. Represented by a rectangle with a folded corner.
+
+## Things to Improve
+
+* It's important to specify parameters for functions
+* It's importnat to specify what one class depends on from the other class
+* It's importnat to specify the public/private status of the function or variable
+* Document every function even if its just the brief.
+* All variables must come from a struct/class and not just be loose and random unless they are local variables. This is specailly true for parameters to functions
+ 

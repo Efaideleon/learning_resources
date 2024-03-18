@@ -56,4 +56,4 @@ The diagram also shows the typical flow of control in a Clean Architecture appli
 
 ## Example of an Use Case in Text
 
-![alt text](example_of_a_use_case_text.png)
+![alt text](assets/example_of_a_use_case_text.png)

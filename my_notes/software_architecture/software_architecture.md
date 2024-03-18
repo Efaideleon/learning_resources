@@ -14,7 +14,7 @@
 
 * This layer is often divided into sub-layers like service layer, domain layer, or business logic layer
   
-* **Examples:** User authentication, order processing, product recommendations
+* **Examples:** User authentication, order processing, product recommendations, use cases (PlaceOrder, RegisterUser)
 
 ### Persistence Layer
 
