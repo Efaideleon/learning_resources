@@ -21,6 +21,9 @@ The Clean Architecture diagram represents a way of structuring software applicat
 
 The key principle of Clean Architecture is the **Dependency Rule: Inner layers should not depend on outer layers, but outer layers can depend on abstractions of inner layers.** This means that changes in the outer layers (e.g., switching to a different database) should not affect the core business logic in the inner layers.
 
+* Remember, class diagrams represent the relationships between classes, not the internal logic of how they interact. So, focus on the direct dependencies between objects when drawing the arrows.
+* if Object A depends on Object B to access Object C the arrow would be drawn from Object A to Object B
+
 ## Flow of Control
 
 The diagram also shows the typical flow of control in a Clean Architecture application:

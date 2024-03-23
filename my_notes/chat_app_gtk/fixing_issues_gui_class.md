@@ -329,3 +329,118 @@ void get_name_and_password(CredentialsData *credentials_data)
 
 * When creating the `application manager` on `create_application_manager()` we will use `create_blank_component()` from each component. Each one of this function returns an instance of the Component with allocated memory using `malloc()`
 * each of the `create_blank_component()` function will take as parameter the necessary components that they depend on
+
+
+## Message not being received
+
+### diagnosis
+
+Message is empty here, after being called by SendMessage()
+```c
+void PingServer(const char *Message, char *RecvBuf, int SocketFD)
+```
+
+### solution
+
+``` c
+char st[500]; // not initialized correctly
+//should be:
+char st[500] = {};
+```
+
+## message not being sent or received
+
+* request_message() in WindowManager.c is alway getting called like it's supposed to
+
+* putting a breakpoint after clicking the Sent buton in the ChatWindow
+* it's sending the message, and returns "sucess"
+* Trying by using the request message button in the ChatWindow
+  * shows no message received
+* there was an error with opening the files that we fixed by using the abosulte path instead
+* now the AcceptFriend popup window appears instantly on the friend_list window
+  * OpenDialog varialbe in message_service was not initialized to 0 at the moment of cration
+* maybe the request function is not getting called because the friend list ui is still open
+
+### BUGS FIXED
+
+* the ChatFlag and FriendFlag in CreateWindow() needed to be updated before every if statement
+* was forgetting to destroy the window widget; now implemented
+* To check if a string is empty compare the first character to '\0' 
+* response[0] == '\0` //empty
+
+## messages being received but sometimes shown to itself and accept friend request appear
+
+* No solution found? fixed itself?
+
+## The friend_request_widget_ui is null when closing the add friend window
+
+```c
+void destroy_friend_request_widget_ui(GtkWidget *widget, gpointer data)
+{
+    FriendRequestProxyData *friend_request_proxy_data = (FriendRequestProxyData*)data;
+    gtk_widget_destroy(friend_request_proxy_data->friend_request_widget_ui->window);
+    free(friend_request_proxy_data->friend_request_widget_ui);
+}
+```
+
+### Fix
+
+* made the `friend_request_widget_window` a global variable in the `friend_request_widget` file
+
+## friend request are not beind received or sent
+
+* message are being sent correct and the server does reply with Friend Request Sent
+* the problem must lie with the recieiving friend request messages
+  
+### Fix
+
+* it was working, the problem was that the friend request was being sent to itself
+
+## updating friend_list_ui after accepting friend request to both users 
+
+* when user a sends a friend request to user b and user b accepts, then user b's name will appear in user a's and user a's name will appear in user b's
+    * Not posible with the current server messager, we will need to send a message from user b to user a that user b has accept their friend request and add them as a friend
+* Instead, when user b clicks on accept, they should add user a and their friendlist will reload when they click accept
+* there is a function `update_contanct_list` in `FriendRequestHandler`, the `friend_request_widget_ui` can call this function since it depends on FriendRequestHandler and pass given reference. the question is if when we update the contanct array, will it be updated in the `friend_list_ui`?
+* `FriendList();` returns "\a\x9c" so nothing has been added to the friend list?
+**Checking if the friendlist when its created in friendlistui is the same as the friendlist that gets passted to update_contact_list**
+
+*it seems like the error appears when the second instance of guiapp sends the friend request to the first instance
+
+### steps to add friends
+
+1. only way to add friend:
+2. user a sends friend requests to user b, user b accepts
+3. user b sends to user a, user a accepts and program crashes
+4. close both gui windows and quit the server
+5. load the server and open the guis again, the friend names would appear int the friend_list_ui
+
+## fixing error for when user b from guiapp2 sends friend request to user a (guiapp) it crashes the app
+
+* in `send.c` on the `AcceptFriendRequest()` function during the first iteration of the while(findUser) loop, msgEntry->message is "addto efai"
+
+* **possible explanation:** 
+* the UserList contains the name "efai" then "abel"
+* when "efai" (user a) sends the friend request
+
+### fix
+
+* add an if statement to check if `msgEntry->message` is not NULL so that there is no Bad memory exception.
+* `msgEntry->message` contains the message from the sends to `addto name` add a user
+
+## need the user to refresh their own friend list after accepting the friend request?
+
+* this will add the friend name to their friend list
+* the sender will not see that the other friend has accepted their friend request until they receive a friend request.
+
+### Observations
+
+* the friend's name does get added to the user's Physical friend list during the `AcceptFriendRequest()` function in send.c
+* the gui is not updating to read from the physical list to reflect it on the screen instantly, only when the window is closed and opened again.
+* **possible ideas to fix**
+* we add a refresh button
+* we'll need to re-read the physical friend list
+* to do this we need to send a message to the server with the user name to retrive the current friend list.
+* we'll need to modify the service to accept our message and send back the friend list
+* The server will need to find the right user in the server from their username and send back the right friend list 
+* The client will need to pass the username to the function pinging the server for the friend list

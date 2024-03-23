@@ -29,4 +29,3 @@ This is the window that when the user click on the + sign it opens to send a fri
 * `remove_book()` // removed
 
 Make sure to pass the Data to the G_Callback functions
-
